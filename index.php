@@ -1,184 +1,120 @@
 <?php
-    include 'dbconnect.php';
-    include 'server.php';
+    include_once '../dbconnect.php';
+    include '../adminfunction.php';
 
-	if (!isset($_SESSION['cust_id'])) {
-		$_SESSION['msg'] = "You must log in first";
-		header('location: login.php');
+    session_start();
+
+	if (!isset($_SESSION['usr_id']))
+    {
+        header("location: ../index.php");
     }
     else{ //Continue to current page
         header( 'Content-Type: text/html; charset=utf-8' );
     }
-
-	if (isset($_GET['logout'])) {
-		session_destroy();
-		unset($_SESSION['cust_name']);
-		header("location: login.php");
-    }
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en" class="js csstransitions">
 
 <head>
-    <title>Bus Ticket Reservation System</title>
+    <title>Admin Panel</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="assets/css/normalize.css" />
-    <link href="assets/css/index.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="adminpanel-assets/css/style.css" />
+    <link rel="stylesheet" href="adminpanel-assets/css/normalize.css" />
+    <script type="text/javascript" src="adminpanel-assets/js/jquery.min.js"></script>
 
-    <!--link for javascript date&time-->
-    <script type="text/javascript" src="assets/js/date&time/jQuery.ptTimeSelect.js"></script>
-    <script type="text/javascript" src="assets/js/date&time/jquery-ui-1.8.22.custom.min.js"></script>
-    <script type="text/javascript" src="assets/js/date&time/jquery.ui.timepicker.js"></script>
-    <script type="text/javascript" src="assets/js/date&time/customDateTime.js"></script>
+    <script>
+        window.onload = function () {
+            document.body.setAttribute("class", document.body.getAttribute('class') + " loaded")
+        }
 
-    <!--link for stylesheet for date&time-->
-    <link rel="stylesheet" href="assets/css/date&time/jquery.ptTimeSelect.css" />
-    <link rel="stylesheet" href="assets/css/date&time/jquery.ui.timepicker.css" />
+    </script>
+
+    <script type="text/javascript" src="adminpanel-assets/js/adminpanel-function.js"></script>
 </head>
 
 <body>
-    <div id="pagewrapper">
-        <div id="topbg"></div>
-        <div id="systemName">
-            <h1>Router Rover</h1>
-        </div>
-        <div id="header">
-            <div id="mainmenu">
-                <header>
-                    <ul>
-                        <li><a href="index.php">Home</a></li>
-                        <li><a href="timetable.php">Time Table</a></li>
-                        <?php  if (!isset($_SESSION['cust_name'])) {?>
-                            <li><a href="login.php">Login</a></li>
-                            <li><a href="register.php">Register</a></li>
-                        <?php }?>
-                        <?php  if (isset($_SESSION['cust_name'])) {?>
-                            <li> <a href="index.php?logout='1'">Logout</a> </li>
-                        <?php }?>
-                    </ul>
-                </header>
+    <div class="wrapper">
+        <div class="sidebar" data-color="red" data-image="../assets/img/sidebar-1.jpg">
+            <div class="logo"> 
+                <a href="index.php" class="simple-text">
+                    Admin Panel
+                    </a>
+                    <?php
+                        if (isset($_SESSION['usr_id'])) { ?>
+                            <span data-hover="Welcome">Welcome - &nbsp;<?php echo $_SESSION['usr_name']; ?>
+                            <?php } else { ?>
+                            <span data-hover="Welcome">Welcome
+                                </span>
+                    <?php } ?>
+                </span>
             </div>
+
+            <?php
+                include 'side-menu.php';
+            ?>
+            
+            <div class="sidebar-background" style="background-image: url(../admin/assets/img/sidebar-1.jpg);"></div>
         </div>
-
-        <div class="content">
-            <!-- notification message -->
-            <?php if (isset($_SESSION['success'])) {?>
-                <div class="error success" >
-                    <h3 style="color: green;">
-                        <?php 
-                            echo $_SESSION['success']; 
-                            unset($_SESSION['success']);
-                        ?>
-                    </h3>
-                </div>
-            <?php } ?>
-
-        </div>
-
-        <div id="content">
-            <h1>Welcome 
-                <?php
-                    if (isset($_SESSION['cust_id']))
-                    {
-                        echo $_SESSION['cust_name'];
-                    }
-                ?>
-            </h1>
-
-            <div class="abc">
-            <?php include('errors.php'); ?>
-                <form id="search_buses_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="has-validation-callback">
-
-                	<label for="journeyFrom" class="required">Journey From</label>
-                	<select class="select" name="journeyFrom" id="journeyFrom" style="width:150px;" data-validation="required">
-                		<option value="">Select From</option>
-
+        <div class="main-panel ps-container ps-theme-default ps-active-y">
+            <div class="dashboard-content content">
+                <div cl ass="container-fluid">
+                    <div style="margin: 25px 15px;">
+                        <h1 class="text-danger"> Dashboard.</h1>
+                    </div>
+                    <a href='route.php' class="row">
                         <?php
-                            $sql = "select DISTINCT departure_station from `route_detail`";
-                            $run = mysqli_query($db,$sql);
-
-                            if(!$run)
-                            	die("Unable to run query".mysqli_error($db));
-
-                            $rows = mysqli_num_rows($run);
-
-                            if($rows>0){
-                            	while($data = mysqli_fetch_object($run)){
-                                    echo '<option value="' . $data -> departure_station . '">' . $data -> departure_station . '</option>';
-                            	}
+                            $query = "SELECT COUNT(*) FROM `route_detail` ";
+                            $result = mysqli_query($con, $query);
+                            if($result) {
+                                $count = mysqli_fetch_array($result);
+                                echo "<h1> $count[0] - Route.</h1>";
                             }
-                            else{
-                            		echo "No data found <br/>";
-                            	}
                         ?>
-
-                	</select>
-                    <br>
-                    <label for="journeyTo" class="required">Journey To</label>
-                    <select class="select" name="journeyTo" id="journeyTo" style="width:150px;" data-validation="required">
-                        <option value="">Select To</option>
-
-                            <?php
-                                $sql = "select DISTINCT arrival_station from `route_detail`";
-                                $run = mysqli_query($db,$sql);
-
-                                if(!$run)
-                                	die("Unable to run query".mysqli_error($db));
-
-                                $rows = mysqli_num_rows($run);
-
-                                if($rows>0){
-                                	while($data = mysqli_fetch_object($run)){
-                                                echo '<option value="' . $data -> arrival_station . '">' . $data -> arrival_station . '</option>';
-                                	}
-                                }
-                                else{
-                                		echo "No data found <br/>";
-                                	}
-                            ?>
-
-                    </select>
-                    <br>
-                    <label for="dateofJourney" class="required">Date</label>
-                    <input style="width:147px;" name="dateOfJourney" id="dateOfJourney" type="date" class="datepicker_bus_date hasDatepicker" data-validation="required" value="<?php echo date("Y-m-d"); ?>" autocomplete="off">
-                    <br />
-                    <label></label>
-                    <input style="margin:5px 25px 0;" type="submit" name="searchBuses" id="searchBuses" value="Search Buses">
-                        
-                                    <!-- Displaying details in a table -->
-                
-
-
-                </form>
+                    </a>
+                    <a href='booking.php' class="row">
+                        <?php
+                            $query = "SELECT COUNT(*) FROM `book_detail`  ";
+                            $result = mysqli_query($con, $query);
+                            if($result) {
+                                $count = mysqli_fetch_array($result);
+                                echo "<h1> $count[0] - Booking.</h1>";
+                            }
+                        ?>
+                    </a>
+                </div>
+                <div cl ass="container-fluid">
+                    <a href='customer.php' class="row">
+                        <?php
+                            $query = "SELECT COUNT(*) FROM `customer` ";
+                            $result = mysqli_query($con, $query);
+                            if($result) {
+                                $count = mysqli_fetch_array($result);
+                                echo "<h1> $count[0] Customer.</h1>";
+                            }
+                        ?>
+                    </a>
+                    <a href='users.php' class="row">
+                        <?php
+                            $query = "SELECT COUNT(*) FROM `admin` ";
+                            $result = mysqli_query($con, $query);
+                            if($result) {
+                                $count = mysqli_fetch_array($result);
+                                echo "<h1> $count[0] Admin.</h1>";
+                            }
+                        ?>
+                    </a>
+                    
+                </div>
             </div>
-
-
-
+            
+            <?php
+                include 'footer.php';
+            ?>
+            
         </div>
-
-
-
-        <!--#contentwrapper-->
-        <div class="clear"></div>
-
-        <footer id="footer" class="footer">
-            <div class="container-fluid">
-                <p class="copyright pull-right">Copyright ©
-                    <script>
-                        document.write(new Date().getFullYear())
-                    </script><a href="#"> OBTRS</a>. 
-                    <br> All Rights Reserved.
-                </p>
-            </div>
-        </footer>
-        
     </div>
-
-
 
 </body>
 
