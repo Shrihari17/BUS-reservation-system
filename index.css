@@ -1,0 +1,549 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: silver;
+    font-family: Times New Roman;
+    font-size: 14px;
+    /* font: 14px 'trebuchet ms', arial, sans-serif; */
+}
+
+form input[type="submit"] {
+    padding: 5px 20px;
+    cursor: pointer;
+}
+
+.text-success {
+    color: #28a745!important
+}
+
+.text-danger {
+    color: #dc3545!important
+}
+
+#pagewrapper {
+    margin: 0 auto;
+    width: 960px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background: white;
+    border: 1px solid #C9E0ED;
+    position: relative;
+    background: #f2f6f8;
+    background: -moz-linear-gradient(top, #f2f6f8 0%, #b5c6d0 0%, #d8e1e7 62%, #e0eff9 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f2f6f8), color-stop(0%, #b5c6d0), color-stop(62%, #d8e1e7), color-stop(100%, #e0eff9));
+    background: -webkit-linear-gradient(top, #f2f6f8 0%, #b5c6d0 0%, #d8e1e7 62%, #e0eff9 100%);
+    background: -o-linear-gradient(top, #f2f6f8 0%, #b5c6d0 0%, #d8e1e7 62%, #e0eff9 100%);
+    background: -ms-linear-gradient(top, #f2f6f8 0%, #b5c6d0 0%, #d8e1e7 62%, #e0eff9 100%);
+    background: linear-gradient(to bottom, #f2f6f8 0%, #b5c6d0 0%, #d8e1e7 62%, #e0eff9 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#f2f6f8', endColorstr='#e0eff9', GradientType=0);
+}
+
+#topbg {
+    position: absolute;
+    background: url(../image/t1.png) no-repeat;
+    height: 180px;
+    width: 295px;
+    float: right;
+    right: 0;
+}
+
+#systemName {
+    padding: 20px;
+    margin: 10px 16px;
+    font-size: 75%;
+    width: 819px;
+    text-align: center;
+    font-family: "Times New Roman", Georgia, Serif;
+}
+
+#mainmenu {
+    /* font-size: 30px; */
+    /* background: white url(bg.gif) repeat-x left top; */
+    background: #1e5799;
+    background: -moz-linear-gradient(top, #1e5799 0%, #2989d8 49%, #207cca 100%, #7db9e8 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1e5799), color-stop(49%, #2989d8), color-stop(100%, #207cca), color-stop(100%, #7db9e8));
+    background: -webkit-linear-gradient(top, #1e5799 0%, #2989d8 49%, #207cca 100%, #7db9e8 100%);
+    background: -o-linear-gradient(top, #1e5799 0%, #2989d8 49%, #207cca 100%, #7db9e8 100%);
+    background: -ms-linear-gradient(top, #1e5799 0%, #2989d8 49%, #207cca 100%, #7db9e8 100%);
+    background: linear-gradient(to bottom, #1e5799 0%, #2989d8 49%, #207cca 100%, #7db9e8 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8', GradientType=0);
+}
+
+#mainmenu ul {
+    /* font-size: 30px; */
+    padding: 10px 20px 10px 20px;
+    margin: 0px;
+}
+
+#mainmenu ul li {
+    display: inline;
+}
+
+#header a {
+    color: #fff;
+    background: #436fac;
+    padding: 4px 15px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+#mainmenu ul li a {
+    color: #ffffff;
+    background-color: transparent;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 11px 10px;
+}
+
+#content {
+    /* background: #fff; */
+    padding: 20px;
+}
+
+.clear {
+    clear: both;
+}
+
+#footer {
+    padding: 10px;
+    margin: 10px 20px;
+    font-size: 0.8em;
+    text-align: center;
+    border-top: 1px solid #C9E0ED;
+}
+
+form label {
+    display: block;
+    float: left;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 110px;
+    font-size: 15px;
+}
+
+form input,
+form select {
+    font-family: Times New Roman;
+    font-size: 15px;
+}
+
+form input,
+form select {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-family: Times New Roman;
+    font-size: 15px;
+}
+
+#bodyhead {
+    margin-left: 10px;
+    margin-top: 80px;
+}
+
+.busdataarea {
+    height: auto;
+    width: auto;
+    background-color: #F5F5F5;
+    padding: 10px;
+    float: left;
+    margin-left: 0px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-right: 650px;
+    line-height: 20px;
+}
+
+#tSize {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.dataTables_wrapper {
+    position: relative;
+    clear: both;
+}
+
+.dataTables_wrapper {
+    position: relative;
+    clear: both;
+    zoom: 1;
+}
+
+div.dataTables_wrapper .ui-widget-header {
+    font-weight: normal;
+}
+
+.dataTables_wrapper .ui-toolbar {
+    padding: 5px;
+}
+
+.ui-helper-clearfix {
+    display: inline-block;
+}
+
+.ui-helper-clearfix {
+    display: block;
+}
+
+.ui-widget-header {
+    border: 1px solid #aaaaaa;
+    background: #cccccc url(../../images/table/ui-bg_highlight-soft_75_cccccc_1x100.png) 50% 50% repeat-x;
+    color: #222222;
+    font-weight: bold;
+}
+
+.ui-corner-tl {
+    -moz-border-radius-topleft: 4px;
+    -webkit-border-top-left-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+.ui-corner-tr {
+    -moz-border-radius-topright: 4px;
+    -webkit-border-top-right-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.dataTables_wrapper .ui-toolbar {
+    padding: 5px;
+}
+
+div.dataTables_wrapper .ui-widget-header {
+    font-weight: normal;
+}
+
+table.display {
+    margin: 0 auto;
+    clear: both;
+    width: 100%;
+}
+
+table.display {
+    margin: 0 auto;
+    width: 100%;
+    clear: both;
+    border-collapse: collapse;
+}
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+    border: 1px solid #d3d3d3;
+    background: #e6e6e6 url(images/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50% repeat-x;
+    font-weight: normal;
+    color: #555555;
+}
+
+table.display thead th {
+    padding: 3px 18px 3px 10px;
+    border-bottom: 1px solid black;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+table.display thead th {
+    padding: 3px 0px 3px 10px;
+    cursor: pointer;
+    cursor: hand;
+}
+
+table.display thead th div.DataTables_sort_wrapper {
+    position: relative;
+    padding-right: 20px;
+}
+
+.css_right {
+    float: right;
+}
+
+.ui-icon {
+    display: block;
+    text-indent: -99999px;
+    overflow: hidden;
+    background-repeat: no-repeat;
+}
+
+.ui-icon {
+    width: 16px;
+    height: 16px;
+    background-image: url(images/ui-icons_222222_256x240.png);
+}
+
+.ui-icon-triangle-1-n {
+    background-position: 0 -16px;
+}
+
+table.display thead th div.DataTables_sort_wrapper span {
+    position: absolute;
+    top: 50%;
+    margin-top: -8px;
+    right: 0;
+}
+
+tr.odd {
+    background-color: #E5F1F4;
+}
+
+td {
+    font-size: 14px;
+}
+
+table.display td {
+    padding: 3px 10px;
+}
+
+table.display td {
+    padding: 3px 10px;
+    text-align: center;
+}
+
+tr.odd td.sorting_1 {
+    background-color: #D3D6FF;
+}
+
+tr.odd td.sorting_1 {
+    background-color: #7898EC;
+}
+
+.boder {
+    width: 200px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+form input[type=text],
+input[type=password] {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+#place input[type="checkbox"] {
+    height: 36px;
+    width: 38px;
+    position: absolute;
+    top: -3px;
+    left: 0px;
+    opacity: 0.8;
+    margin: 5px 10px;
+    transform: scale(1.5);
+    transform-origin: center;
+    cursor: pointer;
+}
+
+.seat a {
+    position: absolute;
+    bottom: 5px;
+    left: 3px;
+}
+
+
+
+
+/* Custom Styles for Bus Ticket Reservation System */
+
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+#pagewrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    border-bottom: 3px solid #343a40;
+}
+
+#content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px 0;
+    margin-top: auto;
+}
+
+.footer p {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .navbar-nav.ml-auto {
+        flex-direction: column;
+    }
+
+    .navbar-nav.ml-auto .nav-item {
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar-nav.ml-auto .nav-item {
+        margin-left: 10px;
+    }
+}
+
+/* Custom Styles for Bus Ticket Reservation System */
+
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+#pagewrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    border-bottom: 3px solid #343a40;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    padding: 10px 20px;
+}
+
+.navbar-nav.ml-auto .nav-link {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 0 5px;
+}
+
+.navbar-nav.ml-auto .nav-link.active {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.navbar-nav.ml-auto .nav-link:hover {
+    background-color: #f8f9fa;
+    color: #007bff;
+    border-radius: 5px;
+}
+
+#content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    font-size: 18px;
+}
+
+.search-form {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 30px 0;
+    margin-top: auto;
+    font-size: 14px;
+}
+
+.footer p {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .navbar-nav.ml-auto {
+        flex-direction: column;
+    }
+
+    .navbar-nav.ml-auto .nav-item {
+        margin-bottom: 15px;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar-nav.ml-auto .nav-item {
+        margin-left: 15px;
+    }
+}
+
+
+/* Add these styles for new fields */
+
+/* Register Form Styles */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input[type="text"],
+.input-group input[type="email"],
+.input-group input[type="password"],
+.input-group input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.input-group input[type="radio"] {
+    margin-right: 10px;
+}
+
+.input-group button.btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.input-group button.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Error/Success Message Styles */
+.error,
+.success {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.success {
+    background-color: #d4edda;
+    color: #155724;
+}
